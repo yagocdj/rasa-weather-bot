@@ -1,0 +1,27 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_weather
+  - get_weather
+
+entities:
+    - city
+
+responses:
+  utter_greet:
+  - text: "Olá! Como você está?"
+
+  utter_goodbye:
+  - text: "Tchau!"
+
+  utter_ask_weather:
+  - text: "Claro! Você poderia especificar a cidade?"
+
+actions:
+  - action_get_weather
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,50 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - oi
+    - olá
+    - e aí
+    - olá aí
+    - bom dia
+    - boa noite
+    - bom dia (regionalismo)
+    - e aí, tudo bem?
+    - vamos lá
+    - e aí, cara
+    - bomdia
+    - boanoite
+    - boa tarde
+
+- intent: goodbye
+  examples: |
+    - tchau
+    - adeus
+    - vejo você depois
+    - boa noite (despedida)
+    - até mais
+    - até logo
+    - tenha um bom dia
+    - até por aí
+    - tchau tchau
+    - vejo você mais tarde
+
+- intent: ask_weather
+  examples: |
+    - Como está o tempo?
+    - Você pode me falar sobre o tempo?
+    - Me diga o tempo.
+    - Como está o tempo?
+
+- intent: get_weather
+  examples: |
+    - [Londres](city)
+    - [Berlim](city)
+    - [Nova York](city)
+    - [João Pessoa](city)
+    - [Guarabira](city)
+    - [Recife](city)
+    - [São Paulo](city)
+    - [Cajazeiras](city)
+    - [Fortaleza](city)
