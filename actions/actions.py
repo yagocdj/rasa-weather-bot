@@ -20,17 +20,28 @@ class ActionGetWeather(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        city = tracker.latest_message['text']
-        weather_data = self.get_weather(city)
+        # Get user's last message
+        # city = tracker.latest_message['text']
+        # Make an API call to get the weather on the selected city
+        # weather_data = self.get_weather(city)
 
-        print(f"Cidade: {city}")
-        print(f"Dados meteorológicos: {weather_data}")
+        city_slot = next(tracker.get_latest_entity_values("city"), None)
+        city = tracker.get_slot("city") or city_slot
 
-        if weather_data:
-            response = f"O tempo em {city} é {weather_data['main']['temp']}°C com {weather_data['weather'][0]['description']}"
+        if city:
+            weather_data = self.get_weather(city)
+            print(f'City: {city}')
+            print(f'Weather data: {weather_data}')
+
+            if weather_data:
+                response = (f"O tempo em {city} é {weather_data['main']['temp']}°C"
+                            f"com {weather_data['weather'][0]['description']}")
+            else:
+                response = f"Desculpe-me. Não consegui obter informações meteorológicas para {city}..."
         else:
             response = f"Desculpe-me. Não consegui obter informações meteorológicas para {city}..."
 
+        # Answer the user with a weather message or a not found message
         dispatcher.utter_message(text=response)
 
         return []

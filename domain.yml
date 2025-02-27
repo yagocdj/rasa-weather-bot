@@ -9,6 +9,13 @@ intents:
 entities:
     - city
 
+slots:
+  city:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: city
+
 responses:
   utter_greet:
   - text: "Olá! Como você está?"
